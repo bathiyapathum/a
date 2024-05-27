@@ -10,254 +10,309 @@
     <pre>
 
 <code>
-
-<!-- Welcome to the world of Fintech! In this business case, 
-We own an online clothing store named "Trendy Styles (PVT) LTD", specializing stylish, affordable clothing for all agers. 
-    Our current online presence consists of a well-established mobile application and website where clients can browse and purchase clothing items.
-
-    
-    Introduction to the Business Domain:
-§ Our online store Trendy Styles (PVT) LTD, currently operates an online platform that offers trending stylish clothing for affordable price to worldwide users. With improvement of technology, 
-    we see an opportunity to expand our sales and service to a large customer base.
-§ WE plan to leverage the latest technology trends, such as Virtual Reality (VR), Image Processing and Artificial Intelligence, 
-    to enhance our online presence and provide better online shopping experience for our customer base.
-
-
-Timeline for the Project:
-o In order to accomplish our expansion objectives, we have delineated a strategic project timeframe.
-1. Phase 1: Requirement analysis and plan project (6 months)
-2. Phase 2: Design and Development (9 months)
-3. Phase 3: Testing and Quality Assurance (2 months)
-4. Phase 4: Deployment and Monitoring (1 month)
-5. Phase 5: Marketing and Launch (4 months)
-o We aim to complete the project withing before two years, ensuring that we deliver high-quality platform for experience the feel of better shopping with AR/VR
-
-
-    FunctionalRequirements
-§ How will the online purchasing experience be incorporated with Virtual Reality (VR)?
-§ Could you give specific instances of how consumers will use virtual reality technologies to connect with products?
-§ Exist any features or functions that rely on algorithms for artificial intelligence (AI) or image processing?
-2. Non-functionalRequirements
-§ What are the anticipated performance levels for picture processing and VR rendering?
-§ How will AI algorithms improve the personalized purchasing experience or recommendation system?
-§ Are there any worries about the security or privacy of data, particularly when using AI to create customer profiles?
-3. IntegrationRequirements
-§ Does the internet platform need to incorporate VR hardware or software?
-§ Which image processing tools or libraries and how will they work with the
-current setup will be used?
-§ Does the implementation of AI-driven features require reliance on external AI
-services or platforms?
-4. ScalabilityandProspectiveGrowth
-§ When the client base expands, how will the architecture allow the scalability of VR and AI functionalities?
-§ Are there any intentions to iterate and improve continuously in response to customer input and technology advancements?
-§ What plans are in place to track and improve system performance over time, particularly considering changing technological trends?
- 
-    
-    
-    Resources for Testing Name and Position of Tester:
-§ QA Manager: Bathiya Pathum § Testing Lead: Thilina Hansana
-Environment for Testing:
-§ VR hardware and software configuration § Libraries and tools for image processing § AI models and algorithms
-
-     Scope of testing In Scope:
-§Testing VR functions, such as interaction, navigation, and product visualization.
-§Accuracy and performance testing in image processing for improved and recognized products.
-§AI-driven feature testing for things like virtual stylist help and tailored recommendations.
-Out of Scope:
-§Hardware compatibility testing (manufacturers' testing) for virtual reality devices.
-§Creation of AI, VR, and image processing algorithms (managed by the developmen team)
-4. Testing Approaches Testing Approach and Methodology:
-§Utilizing both automated and manual testing to guarantee thorough coverage. §exploratory testing to find VR interaction edge cases and usability problems.
-Type of Testing to be performed:
-§Functional testing: Verify AI-driven features, picture recognition, and VR navigation. §Performance testing: Evaluate VR rendering speed, picture processing delay, and AI
-response time through performance testing.
-§Usability testing: Ask users for input to gauge how well VR and AI improvements are
-working.
-    
-    ------
-    Welcome to the world of Fintech! In this business case, we'll explore the
-exciting realm of Financial Technology (Fintech) and how our company
-aims to revolutionize the way people manage their money.
-------
-
-
-
-
-    Customer Trends & Competitors:
-▪Our target customers include individuals, small businesses, and financial institutions seeking modern and efficient financial services. 
-We've observed a growing trend among consumers who prefer digital banking and payment solutions over traditional methods.
-▪In the competitive landscape of Fintech, we face competition from established players like traditional banks, 
-as well as emerging startups offering similar services. However, we believe that our innovative approach and commitment to 
-customer satisfaction will set us apart in the market.
-
-
-
-Project Timelines:
-To achieve our expansion goals, we've outlined a strategic timeline for the project,
-✓
-Phase 1: Research and Development (6 months)
-✓
-Phase 2: Platform Development and Testing (12 months)
-✓
-Phase 3: Marketing and Launch (3 months)
-We aim to complete the project within 21 months, ensuring that we deliver high-quality financial services to our customers in a timely manner.
-
+<!--
+o Select - GETGET /api/customers/{id}
+o Select All - GET /api/customers
+o Create - POST /api/customers
+o Update - PUT /api/customers/{id}
+o Delete - DELETE /api/customers/{id}
 
 
     
-    Future Expansion Plans:
-Looking ahead, we envision further expansion of our Fintech offerings over the next 2-5 years. This includes:
-▪
-Introducing new features and functionalities to our platform, such as investment management tools and personalized financial advice.
-▪
-Exploring partnerships with other businesses and financial institutions to enhance our service offerings and reach new markets.
-▪
-Expanding our geographic presence to serve customers in additional regions and countries.
-▪
-By continuously innovating and adapting to the evolving needs of our customers, we are confident that Fintech Solutions Ltd. will become a leading player in the Fintech industry.
+
+//rmi/rpc------------------
+
+    Import java.rmi.Remote;
+Import java.rmi.RemoteException;
+
+Public interface Sphereservice extends Remote{
+	public double calculateArea (double radius) throws RemoteException;
+	public double calculatevolume (double radius) throws RemoteException;
+}
+
+Private class SphereserviceImpl extends UnicastRemoteObject implements Sphereservice{
+
+	SphereserviceImpl(){
+		super();
+	}
+
+	public double calculateArea (double radius) throws RemoteException{
+		return radius*radius**22/7;
+	}
+	public double calculatevolume (double radius) throws RemoteException{
+		
+	}
+}
+
+
+Public class Server{
+	static public void main(string [] args){
+		try{
+			if(System.getSecurityManager == null){
+			System.setSecurityManager(new RMISecurityManager());
+			}
+
+			Sphereservice obj1 = new SphereserviceImpl();
+
+			Registry reg = LocateRegistry.createRegistry(1099);
+``			reg.rebind(“Sphereservice”,obj1);
+
+	``		System.out.println(“Server is running”);
+
+		}catch(Exception e){
+			System.out.println(“error” + e);
+		}
+	}
+}
+
+
+
+Public class Client{
+	public static void main(String[] args){
+		if(System.getsecurityManager == null){
+			System.setSucirtyManager(new RMISecurityManager());
+		}
+
+		String hostname = “localHost”;
+
+
+		Sphereservice service = (Sphereservice)Naming.lookup(“”)
+	}
+}
+
+
+    ------------------------------
+
+
     
+    //socket
+    try { 
+
+  InetAddress a = InetAddress.getByName(hostname);
+
+  System.out.println(hostname + ":" + 		    			   a.getHostAddress()); 	
+
+} catch (UnknownHostException e) {
+
+  System.out.println("No address found for " + 				   hostname); 
+
+} 
 
 
 
 
 
+    import java.io.*; 
+import java.net.*; 
 
+class TCPClient { 
+	public static void main(String argv[]) throws Exception
+	{         String sentence;         String modifiedSentence; 
+		
+		BufferedReader inFromUser = 
+		     new BufferedReader(new InputStreamReader(System.in));
+		
+		Socket clientSocket = new Socket("hostname", 6789); 
+        
+		DataOutputStream outToServer =         	    new DataOutputStream(clientSocket.getOutputStream());
+BufferedReader inFromServer =           new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); 
+        
+	sentence = inFromUser.readLine(); 
+        
+	outToServer.writeBytes(sentence + '\n'); 
+        
+	modifiedSentence = inFromServer.readLine(); 
+        
+	System.out.println("FROM SERVER: " + modifiedSentence); 
+      
+	clientSocket.close();
+    } 
+} 
 
+//server------
+    import java.io.*; 
+import java.net.*; 
+class TCPServer { 
+    public static void main(String argv[]) throws Exception     {        String clientSentence;        String capitalizedSentence; 
+ 
+		ServerSocket welcomeSocket = new ServerSocket(6789);  
+		while(true) {
 
-    1. Security Requirements:
-✓
-How will user data be protected on our platform?
-•
-We'll need to ensure compliance with industry regulations such as GDPR and implement robust encryption protocols to safeguard user information.
-✓
-What measures will be in place to prevent unauthorized access and fraudulent activities?
-•
-We'll implement multi-factor authentication, transaction monitoring systems, and regular security audits to mitigate security risks.
-2. Functional Requirements:
-✓
-What core functionalities should our platform offer to users?
-•
-We'll need to provide features such as account management, fund transfers, bill payments, and transaction history tracking.
-✓
-How will we handle different types of financial transactions, including peer-to-peer transfers, bill splitting, and international payments?
-•
-We'll need to integrate with banking systems and payment networks to support various transaction types securely.
+		   Socket connectionSocket = welcomeSocket.accept(); 
+           
+		  BufferedReader inFromClient = new BufferedReader(new
+		         InputStreamReader(connectionSocket.getInputStream())); 
+    DataOutputStream  outToClient =            new DataOutputStream(connectionSocket.getOutputStream()); 
+           
+		clientSentence = inFromClient.readLine(); 
+           
+		capitalizedSentence = clientSentence.toUpperCase() + '\n';
 
-
-3. Usability and Accessibility Requirements:
-✓
-How can we ensure that our platform is user-friendly and accessible to all users, including those with disabilities?
-
-    ✓
-What features will be available on our mobile app versus our web platform, and how will they be optimized for different devices?
-
-5. Performance and Scalability Requirements:
-✓
-How will our platform handle peak loads and spikes in user traffic without compromising performance?
-
-
-
-
-Expected Outcomes:
-❖
-From this initial requirement analysis phase, I expect to achieve the following outcomes:
-➢
-A clear understanding of the key functionalities and features required for our Fintech platform.
-➢
-Identification of potential security risks and measures to mitigate them effectively.
-➢
-Compliance with regulatory requirements and standards for operating in the Fintech industry.
-➢
-Definition of performance targets and scalability requirements to ensure optimal platform performance.
-➢
-Alignment of requirements with the business goals outlined in Part 1 of our business case.
-
-
-
-
+		outToClient.writeBytes(capitalizedSentence);     
+	   } 
+	} 
+} 
 
 
 
 
+    -------------------------------------------
+
+    <?xml version=“1.0” encoding=“UTF-8” ?>
+<Subjects xmlns=“”>
+	<subject id=“8”>
+		<subject_name>Science</subject_name>
+		<lecturer>
+			<fname>hey</fname>
+			<sname>bye</bye>
+		</lecturer>
+	</subject>
+	
+</Subjects >
+
+
+Var Subjects = {
+	“id” : 1,
+	“subjectName” : “Science”,
+	“lecturer ” : {
+		“fname” : “dcdwc”,
+		“fname” : “dcdc”
+	}
+}
+
+<?xml version=“1.0” ?>
+<XS:schema xmlns:xs=“wwwdcdcc” xmlns:xsi=“”>
+	<XS:element name=“StockPortFolio”>
+		<XS:complexType>
+			<XS:sequenceType>
+				<XS:element ref=“Stocks” maxOccure=“unbound”/>
+			</XS:sequenceType>
+		<XS:element name=“Stocks”>
+			</XS:complexType>
+				<XS:sequenceType>
+					<XS:element ref=“stockPurchase”/>
+				</XS:sequenceType>
+			</XS:cpomplexType>
+		</XS:element>
+
+		<XS:element name=“stockPuchase”>
+			<XS:complexType>
+				<XS:sequnceType>
+					<XS:element name=“ticket” type=“”XS:string>
+					<XS:element name=“purchasePrice” type=“”XS:float>
+					<XS:element name=“Numpurchase” type=“”XS:double>
+				</XS:sequnceType>
+			</XS:complexType>
+		<XS:element>
+
+	<XS:element>
+<XS:schema>
+
+
+
+Question f.)
+
+My CD Collection
+Title   Artist  Year
+Element
+complexType
+sequnceType
+
+<?xml version=“1.0” encoding>
+<XS:schema xmlns:xs=”hhtp:ded.com” >
+	<XS:element name=“stocks”>
+		<XS:complexType>
+			<XS:sequence>
+				<XS:element ref=“StockPurchase”>
+			</XS:sequnce>
+		</XS:x=complexType>
+	</XS:element name=“StockPurchase”>
+		<XS:complexType>
+			<XS:sequence>
+				<XS:element name=“Tickerter” type=“string”>
+				<XS:element name=“PurchasePrice” type=“double”>
+				<XS:element name=“NumP” type=“inteteger”>
+			</XS:sequnce>
+		</XS:complexType>
+	<XS:element >
+</XS:schema>
+
+
+—————
+<?xml version=“1.0” encoding>
+<Subjects xml:xs=“”>
+	<Subject>
+		<Subject_name id=“1”>Science</subject_NAme>
+		<lecturer>
+			<fname>saman</fname>
+			<lname>kamal</lname>
+		</lecturer>
+`	</Subject>
+
+	<Subject>
+		<Subject_name id=“2”>Science</subject_NAme>
+		<lecturer>
+			<fname>saman</fname>
+			<lname>kamal</lname>
+		</lecturer>
+`	</Subject>
+
+	<Subject>
+		<Subject_name id=“3”>Science</subject_NAme>
+		<lecturer>
+			<fname>saman</fname>
+			<lname>kamal</lname>
+		</lecturer>
+`	</Subject>
+</Subjects>
 
 
 
 
+{
+	“Subjects” : {
+		“subject” : [
+			{
+				“id” : 1,
+				“subject_name” : “science”,
+				“lecturer” : {
+					“”name” : “Saman”,
+					“lNAme” : “kamal”
+				}
+			},
+			{
+				“id” : 1,
+				“subject_name” : “science”,
+				“lecturer” : {
+					“”name” : “Saman”,
+					“lNAme” : “kamal”
+				}
+			},
+			
+		]
+	}
+}
 
-    Version: 1.0
-Date: 2024-05-12
-Prepared by: Naveen Malshan & Dilan Shanuka, QA Manager & Testing Lead
-Table of Contents:
-1.
-Introduction
-2.
-Testing Resources
-3.
-Scope of Testing
-4.
-Testing Approaches
-5.
-Test Schedule
-6.
-Risks & Issues
-1. Introduction
-Executive Summary:
-This test plan outlines the approach and methodology for testing the Fintech Solutions Ltd. platform. The purpose of this document is to ensure that the platform meets the specified requirements outlined in Part 2 of our business case. The testing process will focus on validating the functionality, security, usability, and performance of the platform to deliver a high-quality user experience.
-2. Testing Resources
-Tester’s Name and Role:
-Dilan Shanuka, QA Manager & Testing Lead
-Naveen Malshan, QA Tester
-3. Scope of Testing
-❖
-In Scope:
-✓
-User Account Management Module
-✓
-Fund Transfer Module
-✓
-Bill Payment Module
-❖
-Out of Scope:
-✓
-Advanced Investment Management Features (Planned for future release)
-✓
-Integration with External Financial Institutions (Handled separately by integration team)
-4. Testing Approaches
-Testing Approach and Methodology:
-•
-We will follow a combination of manual and automated testing approaches to ensure comprehensive test coverage.
-Types of Testing to be Performed:
-•
-Functional Testing: Validate the functionality of each module against specified requirements.
-•
-Security Testing: Assess the platform's resistance to security threats and vulnerabilities.
-•
-Usability Testing: Evaluate the user interface and overall user experience.
-•
-Performance Testing: Measure the system's response time and scalability under varying loads.
-5. Test Schedule
-Timeline for Each Testing Phase:
-Functional Testing: 2024-05-12 to 2024-05-14
-Security Testing: 2024-05-15 to 2024-05-20
-Usability Testing: 2024-05-21 to 2024-05-23
-Performance Testing: 2024-05-24 to 2024-05-31
-6. Risks & Issues
-❖
-Risks Associated with the Testing Process:
-•
-Limited Test Data: Insufficient test data may impact the thoroughness of testing.
-•
-Integration Dependencies: Delays or issues with external integrations may affect testing timelines.
-•
-Compliance Risks: Failure to meet regulatory requirements may lead to legal issues.
-❖
-Mitigation Strategies for Identified Risks:
-•
-Test Data Generation: Develop scripts to generate realistic test data for comprehensive testing.
-•
-Continuous Communication: Maintain open communication with integration teams to address integration issues promptly.
-•
-Regulatory Compliance Checks: Conduct regular compliance checks to ensure adherence to regulatory requirements. -->
+
+Val Subjects = {
+	subjects : [
+		subject : {
+			“Subject_name” : “science”,
+			“lecturer” : {
+				“fname ” : “saman”,
+				“lNamwe” : “kamal”
+			},
+		subject : {
+			“Subject_name” : “science”,
+			“lecturer” : {
+				“fname ” : “saman”,
+				“lNamwe” : “kamal”
+			}
+	]
+
+}
+    
+    -->
 
     
 </code>
